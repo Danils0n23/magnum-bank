@@ -1,63 +1,62 @@
 import React from "react";
 import { Modal, Button } from "react-bootstrap";
 import { FaCheckCircle } from "react-icons/fa";
+import "./TransactionForm.css";
 
 const TransactionSummary = ({
   show,
   handleClose,
-  formData,
-  transactionType,
+  formData = {},
+  transactionType = "",
 }) => {
-  const renderSummaryDetails = () => (
-    <ul>
-      <li>
-        <strong>Nome:</strong> {formData.name}
-      </li>
-      <li>
-        <strong>CPF/CNPJ:</strong> {formData.cpfCnpj}
-      </li>
+  const formatCurrency = (value) =>
+    `R$ ${parseFloat(value || 0)
+      .toFixed(2)
+      .replace(".", ",")}`;
 
-      {transactionType === "PIX" ? (
-        <li>
-          <strong>Chave PIX:</strong> {formData.key}
-        </li>
-      ) : (
-        <>
-          <li>
-            <strong>Banco:</strong> {formData.bank}
-          </li>
-          <li>
-            <strong>Agência:</strong> {formData.agency}
-          </li>
-          <li>
-            <strong>Conta:</strong> {formData.account}
-          </li>
-        </>
-      )}
+  const renderPixDetails = () => (
+    <DetailItem label="Chave PIX" value={formData.key} />
+  );
 
-      <li>
-        <strong>Valor:</strong> R$ {parseFloat(formData.amount || 0).toFixed(2)}
-      </li>
-      <li>
-        <strong>Data:</strong> {formData.date}
-      </li>
-    </ul>
+  const renderBankDetails = () => (
+    <>
+      <DetailItem label="Banco" value={formData.bank} />
+      <DetailItem label="Agência" value={formData.agency} />
+      <DetailItem label="Conta" value={formData.account} />
+    </>
+  );
+
+  const DetailItem = ({ label, value }) => (
+    <div className="detail-item">
+      <span className="label">{label}:</span>
+      <span className="value">{value || "Não informado"}</span>
+    </div>
   );
 
   return (
-    <Modal show={show} onHide={handleClose} centered>
-      <Modal.Header closeButton>
-        <Modal.Title>Transferência Realizada</Modal.Title>
-      </Modal.Header>
+    <Modal show={show} onHide={handleClose} centered size="md">
+      <Modal.Header closeButton className="border-0 pb-0" />
       <Modal.Body>
-        <div className="text-center mb-3">
-          <FaCheckCircle size={50} color="green" />
-          <h5 className="mt-3">Resumo da Transferência ({transactionType})</h5>
+        <div className="summary-container text-center">
+          <FaCheckCircle className="success-icon" />
+          <h4 className="title">Transferência Realizada</h4>
+          <p className="subtitle">
+            Resumo da Transferência ({transactionType})
+          </p>
+
+          <div className="summary-details mt-4">
+            <DetailItem label="Nome" value={formData.name} />
+            <DetailItem label="CPF/CNPJ" value={formData.cpfCnpj} />
+            {transactionType === "PIX"
+              ? renderPixDetails()
+              : renderBankDetails()}
+            <DetailItem label="Valor" value={formatCurrency(formData.amount)} />
+            <DetailItem label="Data" value={formData.date} />
+          </div>
         </div>
-        {renderSummaryDetails()}
       </Modal.Body>
-      <Modal.Footer>
-        <Button variant="success" onClick={handleClose}>
+      <Modal.Footer className="border-0 pt-0">
+        <Button variant="success" onClick={handleClose} className="px-4">
           Fechar
         </Button>
       </Modal.Footer>

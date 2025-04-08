@@ -1,5 +1,21 @@
 import React from "react";
 import { Form, Row, Col, Spinner } from "react-bootstrap";
+import "./TransactionForm.css";
+
+const Field = ({ id, type, name, placeholder, value, onChange }) => (
+  <Form.Floating className="mb-3">
+    <Form.Control
+      id={id}
+      type={type}
+      name={name}
+      placeholder={placeholder}
+      value={value}
+      onChange={onChange}
+      required
+    />
+    <label htmlFor={id}>{placeholder}</label>
+  </Form.Floating>
+);
 
 const TransactionForm = ({
   transactionType,
@@ -9,171 +25,123 @@ const TransactionForm = ({
   handleSubmit,
   isLoading,
 }) => {
-  const renderPixFields = () => (
+  const renderFieldRow = (fields) => (
     <Row>
-      <Col md={12}>
-        <Form.Floating className="mb-3">
-          <Form.Control
-            id="key"
-            type="text"
-            name="key"
-            placeholder="Chave PIX"
-            value={formData.key}
+      {fields.map((field, idx) => (
+        <Col key={field.id} md={field.md || 12}>
+          <Field
+            {...field}
+            value={formData[field.name]}
             onChange={handleChange}
-            required
           />
-        </Form.Floating>
-      </Col>
+        </Col>
+      ))}
     </Row>
   );
 
+  const renderPixFields = () =>
+    renderFieldRow([
+      { id: "key", type: "text", name: "key", placeholder: "Chave PIX" },
+    ]);
+
   const renderTedFields = () => (
     <>
-      <Row>
-        <Col md={12}>
-          <Form.Floating className="mb-3">
-            <Form.Control
-              id="bank"
-              type="text"
-              name="bank"
-              placeholder="Banco"
-              value={formData.bank}
-              onChange={handleChange}
-              required
-            />
-          </Form.Floating>
-        </Col>
-      </Row>
-
-      <Row>
-        <Col md={6}>
-          <Form.Floating className="mb-3">
-            <Form.Control
-              id="agency"
-              type="text"
-              name="agency"
-              placeholder="Agência"
-              value={formData.agency}
-              onChange={handleChange}
-              required
-            />
-          </Form.Floating>
-        </Col>
-        <Col md={6}>
-          <Form.Floating className="mb-3">
-            <Form.Control
-              id="account"
-              type="text"
-              name="account"
-              placeholder="Conta"
-              value={formData.account}
-              onChange={handleChange}
-              required
-            />
-          </Form.Floating>
-        </Col>
-      </Row>
+      {renderFieldRow([
+        { id: "bank", type: "text", name: "bank", placeholder: "Banco" },
+      ])}
+      {renderFieldRow([
+        {
+          id: "agency",
+          type: "text",
+          name: "agency",
+          placeholder: "Agência",
+          md: 6,
+        },
+        {
+          id: "account",
+          type: "text",
+          name: "account",
+          placeholder: "Conta",
+          md: 6,
+        },
+      ])}
     </>
   );
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <Row className="mb-3">
-        {["PIX", "TED"].map((type) => (
-          <Col key={type} xs={6}>
-            <Form.Check
-              type="radio"
-              label={type}
-              name="transactionType"
-              value={type}
-              checked={transactionType === type}
-              onChange={() => setTransactionType(type)}
-            />
-          </Col>
-        ))}
-      </Row>
+    <Form onSubmit={handleSubmit} className="transaction-form p-3">
+      <div className="form-section mb-4">
+        <h5 className="form-title">Tipo de Transferência</h5>
+        <Row>
+          {["PIX", "TED"].map((type) => (
+            <Col key={type} xs={6}>
+              <Form.Check
+                type="radio"
+                label={type}
+                name="transactionType"
+                value={type}
+                checked={transactionType === type}
+                onChange={() => setTransactionType(type)}
+                className="custom-radio"
+              />
+            </Col>
+          ))}
+        </Row>
+      </div>
 
-      <Row>
-        <Col md={6}>
-          <Form.Floating className="mb-3">
-            <Form.Control
-              id="cpfCnpj"
-              type="text"
-              name="cpfCnpj"
-              placeholder="CPF/CNPJ"
-              value={formData.cpfCnpj}
-              onChange={handleChange}
-              required
-            />
-          </Form.Floating>
-        </Col>
-        <Col md={6}>
-          <Form.Floating className="mb-3">
-            <Form.Control
-              id="name"
-              type="text"
-              name="name"
-              placeholder="Nome do favorecido"
-              value={formData.name}
-              onChange={handleChange}
-              required
-            />
-          </Form.Floating>
-        </Col>
-      </Row>
+      <div className="form-section">
+        {renderFieldRow([
+          {
+            id: "cpfCnpj",
+            type: "text",
+            name: "cpfCnpj",
+            placeholder: "CPF/CNPJ",
+            md: 6,
+          },
+          {
+            id: "name",
+            type: "text",
+            name: "name",
+            placeholder: "Nome do favorecido",
+            md: 6,
+          },
+        ])}
 
-      {transactionType === "PIX" ? renderPixFields() : renderTedFields()}
+        {transactionType === "PIX" ? renderPixFields() : renderTedFields()}
 
-      <Row>
-        <Col md={6}>
-          <Form.Floating className="mb-3">
-            <Form.Control
-              id="amount"
-              type="number"
-              name="amount"
-              placeholder="Valor"
-              value={formData.amount}
-              onChange={handleChange}
-              required
-            />
-          </Form.Floating>
-        </Col>
-        <Col md={6}>
-          <Form.Floating className="mb-3">
-            <Form.Control
-              id="date"
-              type="date"
-              name="date"
-              placeholder="Data da transferência"
-              value={formData.date}
-              onChange={handleChange}
-              required
-            />
-          </Form.Floating>
-        </Col>
-      </Row>
+        {renderFieldRow([
+          {
+            id: "amount",
+            type: "number",
+            name: "amount",
+            placeholder: "Valor",
+            md: 6,
+          },
+          {
+            id: "date",
+            type: "date",
+            name: "date",
+            placeholder: "Data da transferência",
+            md: 6,
+          },
+        ])}
 
-      <Row>
-        <Col md={12}>
-          <Form.Floating className="mb-4">
-            <Form.Control
-              id="password"
-              type="password"
-              name="password"
-              placeholder="Senha de transação"
-              value={formData.password}
-              onChange={handleChange}
-              required
-            />
-          </Form.Floating>
-        </Col>
-      </Row>
-      <div className="flex">
+        {renderFieldRow([
+          {
+            id: "password",
+            type: "password",
+            name: "password",
+            placeholder: "Senha de transação",
+          },
+        ])}
+      </div>
+
+      <div className="text-end mt-4">
         <button
-          className="btn btn-primary"
-          variant="primary"
+          className="btn btn-success btn-lg px-4"
           type="submit"
           disabled={isLoading}
+          aria-busy={isLoading}
         >
           {isLoading ? (
             <>
