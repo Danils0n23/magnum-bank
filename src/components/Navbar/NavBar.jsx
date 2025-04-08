@@ -59,12 +59,6 @@ const Navbar = () => {
                 </Link>
               </li>
             </ul>
-
-            <form className="d-flex" role="search">
-              <button className="btn nav_search-btn" type="submit">
-                <FaSearch />
-              </button>
-            </form>
           </div>
         </nav>
       </div>
