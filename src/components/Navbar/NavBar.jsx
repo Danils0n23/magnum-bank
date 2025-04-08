@@ -49,14 +49,14 @@ const Navbar = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/team">
+                <Link className="nav-link" to="/teammate">
                   Equipe
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/login">
+                <Link className="nav-link" to="/login">
                   <FaUser /> Entrar
-                </a>
+                </Link>
               </li>
             </ul>
 
