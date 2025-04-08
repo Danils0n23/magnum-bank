@@ -1,0 +1,25 @@
+.input-underline-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.input-underline-label {
+  font-size: 0.95rem;
+  margin-bottom: 0.2rem;
+  color: #333;
+}
+
+.input-underline {
+  border: none;
+  border-bottom: 2px solid #ccc;
+  outline: none;
+  font-size: 1rem;
+  padding: 4px 0;
+  background-color: transparent;
+  transition: border-color 0.3s;
+}
+
+.input-underline:focus {
+  border-bottom: 2px solid #ff0000;
+}

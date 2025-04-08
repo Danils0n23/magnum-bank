@@ -75,7 +75,7 @@ const LoginForm = () => {
                         <input
                           type="text"
                           placeholder="Digite seu nome"
-                          className="form-control"
+                          className="form-control input"
                           value={name}
                           onChange={(e) => setName(e.target.value)}
                         />
@@ -87,7 +87,7 @@ const LoginForm = () => {
                         <input
                           type="email"
                           placeholder="Digite seu e-mail"
-                          className="form-control"
+                          className="form-control input"
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
                         />
@@ -99,7 +99,7 @@ const LoginForm = () => {
                         <input
                           type="password"
                           placeholder="Crie uma senha"
-                          className="form-control"
+                          className="form-control input"
                           value={password}
                           onChange={(e) => setPassword(e.target.value)}
                         />
@@ -125,7 +125,7 @@ const LoginForm = () => {
                           id="email"
                           name="email"
                           placeholder="Telefone ou e-mail"
-                          className="form-control"
+                          className="form-control input"
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
                         />
@@ -140,7 +140,7 @@ const LoginForm = () => {
                           id="psw"
                           name="psw"
                           placeholder="Digite sua senha"
-                          className="form-control"
+                          className="form-control input"
                           value={password}
                           onChange={(e) => setPassword(e.target.value)}
                         />
@@ -166,23 +166,29 @@ const LoginForm = () => {
                   )}
                 </div>
               </div>
-              <div className=" justify-content-center my-2 px-3">
-                <GoogleLogin
-                  onSuccess={(credentialResponse) => {
-                    const decoded = jwtDecode(credentialResponse.credential);
-                    console.log("Usuário logado com Google:", decoded);
-                    localStorage.setItem("userGoogle", JSON.stringify(decoded));
-                    navigate("/dashboard");
-                  }}
-                  onError={() => {
-                    console.error("Erro ao logar com Google");
-                  }}
-                  theme="outline"
-                  size="large"
-                  text="continue_with"
-                  shape="circle"
-                  logo_alignment="center"
-                />
+
+              <div className="google-login-wrapper">
+                <div className="google-login-inner">
+                  <GoogleLogin
+                    onSuccess={(credentialResponse) => {
+                      const decoded = jwtDecode(credentialResponse.credential);
+                      console.log("Usuário logado com Google:", decoded);
+                      localStorage.setItem(
+                        "userGoogle",
+                        JSON.stringify(decoded)
+                      );
+                      navigate("/dashboard");
+                    }}
+                    onError={() => {
+                      console.error("Erro ao logar com Google");
+                    }}
+                    theme="outline"
+                    size="large"
+                    text="continue_with"
+                    shape="circle"
+                    logo_alignment="center"
+                  />
+                </div>
               </div>
 
               <div className="bottom text-center mb-5">

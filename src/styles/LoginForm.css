@@ -1,4 +1,4 @@
-input,
+.input,
 textarea {
   background-color: #fff;
   border-radius: 50px !important;
@@ -14,7 +14,6 @@ textarea {
 input:focus,
 textarea:focus {
   box-shadow: none !important;
-
   outline-width: 0;
   font-weight: 400;
 }
@@ -30,7 +29,7 @@ button:focus {
 }
 
 .card1 {
-  width: 50%;
+  width: 60%;
   padding: 40px 30px 10px 30px;
 }
 
@@ -121,21 +120,8 @@ a:hover {
   color: #b71c1c;
 }
 
-.btn-google {
-  border: 1px solid #ccc;
-  color: #520404;
-  padding: 0.6rem 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.6rem;
-  border-radius: 30px;
-  transition: background-color 0.2s ease;
-}
-
-.btn-google:hover {
-  background-color: #4b0404;
-  color: #fff;
+.google-login-inner {
+  text-align: center;
 }
 
 .google-icon {

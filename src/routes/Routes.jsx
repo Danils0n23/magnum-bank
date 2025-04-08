@@ -12,11 +12,15 @@ import Services from "../pages/Services";
 import WhyChooseUs from "../pages/WhyChooseUs";
 import TeamSection from "../pages/TeamSection";
 import LoginForm from "../pages/Login";
+import Dashboard from "../pages/Dashboard";
+import DashboardContent from "../components/DashboardContent/DashboardContent";
+import Transaction from "../pages/Transaction";
 
-// Componente wrapper para usar o hook useLocation fora do Router
 const Layout = () => {
   const location = useLocation();
-  const isLoginPage = location.pathname === "/login";
+  const isLoginPage =
+    location.pathname.startsWith("/dashboard", "/transactions") ||
+    location.pathname === "/login";
 
   return (
     <>
@@ -29,6 +33,12 @@ const Layout = () => {
         <Route path="/whyUs" element={<WhyChooseUs />} />
         <Route path="/teammate" element={<TeamSection />} />
         <Route path="/login" element={<LoginForm />} />
+
+        {/* Rota com layout dashboard e subrotas */}
+        <Route path="/dashboard" element={<Dashboard />}>
+          <Route index element={<DashboardContent />} />
+          <Route path="transactions" element={<Transaction />} />
+        </Route>
       </Routes>
 
       {!isLoginPage && <Footer />}
