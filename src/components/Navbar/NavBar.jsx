@@ -1,5 +1,6 @@
 import React from "react";
 import { FaUser, FaSearch } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import Logo from "../../../public/magnum.png";
 
 const Navbar = () => {
@@ -26,26 +27,26 @@ const Navbar = () => {
 
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item active">
+              <li className="nav-item">
                 <a className="nav-link" href="/">
                   Início
                   <span className="sr-only"></span>
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/about">
+                <Link className="nav-link" to="/about">
                   Sobre
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/services">
+                <Link className="nav-link" to="/services">
                   Serviços
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/why">
+                <Link className="nav-link" to="/whyUs">
                   Por que nós?
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="/team">

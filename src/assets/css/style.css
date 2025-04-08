@@ -50,7 +50,7 @@ body {
 }
 
 .heading_container h2 span {
-  color: #00bbf0;
+  color: #ff0006;
 }
 
 .heading_container p {
@@ -182,11 +182,11 @@ a:focus {
   height: 35px;
   padding: 0;
   border: none;
-  color: #ffffff;
+  color: #ff0009;
 }
 
 .custom_nav-container .nav_search-btn:hover {
-  color: #ff0009;
+  color: #ff000879;
 }
 
 .custom_nav-container .navbar-toggler {
@@ -285,11 +285,11 @@ a:focus {
   font-weight: bold;
   text-transform: uppercase;
   margin-bottom: 15px;
-  color: #ffffff;
+  color: #363232;
 }
 
 .slider_section .detail-box p {
-  color: #fefefe;
+  color: #363232;
   font-size: 14px;
 }
 
@@ -310,7 +310,7 @@ a:focus {
 .slider_section .detail-box .btn-box .btn1 {
   display: inline-block;
   padding: 10px 15px;
-  background-color: #00bbf0;
+  background-color: #ff0006;
   color: #ffffff;
   border-radius: 0;
   -webkit-transition: all 0.3s;
@@ -319,7 +319,7 @@ a:focus {
 }
 
 .slider_section .detail-box .btn-box .btn1:hover {
-  background-color: #007fa4;
+  background-color: #ff00049c;
 }
 
 .slider_section .detail-box .btn-box .btn2 {
@@ -419,9 +419,9 @@ a:focus {
   align-items: center;
   text-align: center;
   margin-top: 45px;
-  background-color: #f8f8f9;
+  background-color: #dd0e15;
   padding: 20px;
-  border-radius: 5px;
+  border-radius: 30px;
 }
 
 .service_section .box .img-box {
@@ -445,15 +445,19 @@ a:focus {
   max-height: 100%;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
+  color: #ffffff;
 }
 
 .service_section .box .detail-box h5 {
   font-weight: bold;
   text-transform: uppercase;
+  color: #ffffff;
 }
-
+.service_section .box .detail-box p {
+  color: #ffffff;
+}
 .service_section .box .detail-box a {
-  color: #00204a;
+  color: #ffffff;
   font-weight: 600;
 }
 
@@ -474,7 +478,7 @@ a:focus {
 .service_section .btn-box a {
   display: inline-block;
   padding: 10px 45px;
-  background-color: #00bbf0;
+  background-color: #ff0006;
   color: #ffffff;
   border-radius: 0;
   -webkit-transition: all 0.3s;
@@ -483,11 +487,11 @@ a:focus {
 }
 
 .service_section .btn-box a:hover {
-  background-color: #007fa4;
+  background-color: #ff0004b9;
 }
 
 .about_section {
-  background-color: #00204a;
+  background-color: #990003;
   color: #ffffff;
 }
 
@@ -516,7 +520,7 @@ a:focus {
 .about_section .detail-box a {
   display: inline-block;
   padding: 10px 45px;
-  background-color: #00bbf0;
+  background-color: #f00000;
   color: #ffffff;
   border-radius: 0px;
   -webkit-transition: all 0.3s;
@@ -526,7 +530,7 @@ a:focus {
 }
 
 .about_section .detail-box a:hover {
-  background-color: #007fa4;
+  background-color: #a40000bd;
 }
 
 .why_section .box {
@@ -591,7 +595,7 @@ a:focus {
 .why_section .btn-box a {
   display: inline-block;
   padding: 10px 45px;
-  background-color: #00bbf0;
+  background-color: #f00303;
   color: #ffffff;
   border-radius: 0;
   -webkit-transition: all 0.3s;
@@ -600,13 +604,13 @@ a:focus {
 }
 
 .why_section .btn-box a:hover {
-  background-color: #007fa4;
+  background-color: #a70303;
 }
 
 /*team section */
 .team_section {
   text-align: center;
-  background-color: #00204a;
+  background-color: #970707e5;
   color: #ffffff;
 }
 
@@ -627,14 +631,7 @@ a:focus {
   -webkit-transition: all 0.1s;
   transition: all 0.1s;
   margin-top: 45px;
-  background: -webkit-gradient(
-    linear,
-    left top,
-    left bottom,
-    from(#002759),
-    to(#002b64)
-  );
-  background: linear-gradient(to bottom, #002759, #002b64);
+  background: #55020294;
 }
 
 .team_section .team_container .box .img-box {
@@ -660,7 +657,7 @@ a:focus {
 }
 
 .team_section .team_container .box .detail-box h5 {
-  color: #00bbf0;
+  color: #ffffff;
   font-weight: 600;
   position: relative;
 }

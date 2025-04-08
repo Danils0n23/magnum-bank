@@ -1,5 +1,4 @@
 import React from "react";
-
 import {
   FaMapMarker,
   FaPhone,
@@ -15,7 +14,6 @@ const Footer = () => {
     <section className="info_section layout_padding2">
       <div className="container">
         <div className="row">
-          {/* Informações de Contato */}
           <div className="col-md-6 col-lg-3 info_col">
             <div className="info_contact">
               <h4>Endereço</h4>
@@ -49,8 +47,6 @@ const Footer = () => {
               </a>
             </div>
           </div>
-
-          {/* Detalhes */}
           <div className="col-md-6 col-lg-3 info_col">
             <div className="info_detail">
               <h4>Informações</h4>
@@ -61,8 +57,6 @@ const Footer = () => {
               </p>
             </div>
           </div>
-
-          {/* Links */}
           <div className="col-md-6 col-lg-2 mx-auto info_col">
             <div className="info_link_box">
               <h4>Links</h4>
@@ -77,8 +71,6 @@ const Footer = () => {
               </div>
             </div>
           </div>
-
-          {/* Inscrição */}
           <div className="col-md-6 col-lg-3 info_col">
             <h4>Inscreva-se</h4>
             <form action="#">
